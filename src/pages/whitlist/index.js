@@ -26,11 +26,16 @@ const WhitListPage = () => {
  
   const getCart = getStoredCart();
   const savedCart = [];
+      console.log('save cart', savedCart);
+  //  console.log('get cart', getCart);
 
-   console.log('get cart', getCart);
+  const [cart, setCart] = useState(savedCart);
+  console.log('cart data',cart);
 
+  
   for (const score in getCart) {
     const addedProduct = loadData?.find((product) => product.score.toString() === score.toString());
+    console.log('added product', addedProduct);
     if (addedProduct) {
       const quantity = savedCart[score.toString()];
       addedProduct.quantity = quantity;
@@ -40,8 +45,7 @@ const WhitListPage = () => {
   }
 
 
-  const [cart, setCart] = useState(savedCart);
-  console.log('cart data',cart);
+  
 
   const handleDetails = (id) => {
     const remaining = cart.filter((product) => product.score.toString() !== id.toString());
@@ -57,9 +61,10 @@ const WhitListPage = () => {
     <Layout>
     <Container>
       <Row md={4} className=" ">
-        {cart?.map((item, i) => (
+        {savedCart?.map((item, i) => (
           <WhitList item={item} key={i} index={i} handleDetails={handleDetails}/>
         ))}
+      
       </Row>
     </Container>
   </Layout>

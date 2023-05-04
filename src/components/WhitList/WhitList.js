@@ -5,9 +5,10 @@ import Card from "react-bootstrap/Card";
 
 
 const WhitList = ({item, handleDetails}) => {
-  console.log('white list details', item);
+  // console.log('white list details', item);
 
     return (
+
         <Card className="m-2">
         <Card.Img variant="top" src={item?.show?.image?.medium} />
         <Card.Body>
@@ -22,7 +23,7 @@ const WhitList = ({item, handleDetails}) => {
             </Card.Text>
           </Card.Body>
          
-            <Button onClick={()=>handleDetails(item)} variant="primary">delete</Button>
+            <Button onClick={()=>handleDetails(item.score)} variant="primary">delete</Button>
           
 
         </Card.Body>
