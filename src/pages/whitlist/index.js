@@ -9,10 +9,9 @@ import React, { useEffect, useState } from "react";
 import { Container, Row } from "react-bootstrap";
 
 const WhitListPage = () => {
-
   const [loadData, setLoadData] = useState(null);
 
-   console.log('load data', loadData);
+  console.log("load data", loadData);
   useEffect(() => {
     fetch(`https://api.tvmaze.com/search/shows?q=all`)
       .then((res) => res.json())
@@ -23,32 +22,31 @@ const WhitListPage = () => {
       });
   }, []);
 
- 
   const getCart = getStoredCart();
   const savedCart = [];
-      console.log('save cart', savedCart);
+  console.log("save cart", savedCart);
   //  console.log('get cart', getCart);
 
   const [cart, setCart] = useState(savedCart);
-  console.log('cart data',cart);
+  console.log("cart data", cart);
 
-  
   for (const score in getCart) {
-    const addedProduct = loadData?.find((product) => product.score.toString() === score.toString());
-    console.log('added product', addedProduct);
+    const addedProduct = loadData?.find(
+      (product) => product.score.toString() === score.toString()
+    );
+    console.log("added product", addedProduct);
     if (addedProduct) {
       const quantity = savedCart[score.toString()];
       addedProduct.quantity = quantity;
       savedCart.push(addedProduct);
-      console.log('save cart data',savedCart);
+      console.log("save cart data", savedCart);
     }
   }
 
-
-  
-
   const handleDetails = (id) => {
-    const remaining = cart.filter((product) => product.score.toString() !== id.toString());
+    const remaining = cart.filter(
+      (product) => product.score.toString() !== id.toString()
+    );
     setCart(remaining);
     removeFromDb(id.toString());
   };
@@ -59,15 +57,19 @@ const WhitListPage = () => {
 
   return (
     <Layout>
-    <Container>
-      <Row md={4} className=" ">
-        {savedCart?.map((item, i) => (
-          <WhitList item={item} key={i} index={i} handleDetails={handleDetails}/>
-        ))}
-      
-      </Row>
-    </Container>
-  </Layout>
+      <Container>
+        <Row md={4} className=" ">
+          {savedCart?.map((item, i) => (
+            <WhitList
+              item={item}
+              key={i}
+              index={i}
+              handleDetails={handleDetails}
+            />
+          ))}
+        </Row>
+      </Container>
+    </Layout>
   );
 };
 

@@ -1,12 +1,16 @@
-import { addToDb, deleteShoppingCart, getStoredCart } from "@/components/FakeDB/Fakedb";
+import {
+  addToDb,
+  deleteShoppingCart,
+  getStoredCart,
+} from "@/components/FakeDB/Fakedb";
 import Layout from "@/components/Layout/Layout";
 import Details from "@/components/Summary/Details";
 import { useRouter } from "next/router";
 import React, { useEffect, useState } from "react";
+import { toast } from "react-hot-toast";
 
 const SummaryPage = () => {
-
-    const [cart, setCart] = useState([]);
+  const [cart, setCart] = useState([]);
   const route = useRouter().query;
   const id = parseFloat(route.summary);
   //   console.log("data",id);
@@ -32,7 +36,9 @@ const SummaryPage = () => {
     const storedCart = getStoredCart();
     const savedCart = [];
     for (const score in storedCart) {
-      const addedProduct = loadData?.find((product) => product.score.toString() === score.toString());
+      const addedProduct = loadData?.find(
+        (product) => product.score.toString() === score.toString()
+      );
       if (addedProduct) {
         const quantity = storedCart[score.toString()];
         addedProduct.quantity = quantity;
@@ -45,22 +51,25 @@ const SummaryPage = () => {
   const handleAddToCart = (selectedProduct) => {
     console.log("selected product", selectedProduct.score.toString());
     let newCart = [];
-    const exists = cart.find((product) => product.score.toString() === selectedProduct.score.toString());
+    const exists = cart.find(
+      (product) => product.score.toString() === selectedProduct.score.toString()
+    );
     if (!exists) {
       selectedProduct.quantity = 1;
       newCart = [...cart, selectedProduct];
     } else {
-      const rest = cart.filter((product) => product.score.toString() !== selectedProduct.score.toString());
+      const rest = cart.filter(
+        (product) =>
+          product.score.toString() !== selectedProduct.score.toString()
+      );
       exists.quantity = exists.quantity + 1;
       newCart = [...rest, exists];
     }
 
     setCart(newCart);
-    addToDb(selectedProduct.score.toString())
+    addToDb(selectedProduct.score.toString());
+    toast.success("book added to book store");
   };
-
-;
-
 
   return (
     <Layout>

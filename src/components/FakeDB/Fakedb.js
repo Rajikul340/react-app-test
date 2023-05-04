@@ -1,18 +1,15 @@
 // use local storage to manage cart data
 
 const addToDb = (id) => {
-
-         console.log('add to db id', id);
+  console.log("add to db id", id);
   let shoppingCart = {};
-  if (typeof window !== 'undefined') {
+  if (typeof window !== "undefined") {
     //get the shopping cart from local storage
     const storedCart = localStorage?.getItem("shopping-cart");
     if (storedCart) {
       shoppingCart = JSON.parse(storedCart);
     }
-  
   }
-
 
   // add quantity
   const quantity = shoppingCart[id];
@@ -22,7 +19,7 @@ const addToDb = (id) => {
   } else {
     shoppingCart[id] = 1;
   }
-  if (typeof window !== 'undefined') {
+  if (typeof window !== "undefined") {
     localStorage?.setItem("shopping-cart", JSON.stringify(shoppingCart));
   }
 };
@@ -31,19 +28,17 @@ const getStoredCart = () => {
   let shoppingCart = {};
 
   //get the shopping cart from local storage
-  if (typeof window !== 'undefined') {
-    const storedCart=localStorage?.getItem("shopping-cart");
+  if (typeof window !== "undefined") {
+    const storedCart = localStorage?.getItem("shopping-cart");
     if (storedCart) {
       shoppingCart = JSON.parse(storedCart);
     }
     return shoppingCart;
-
   }
-
 };
 
 const removeFromDb = (id) => {
-  if (typeof window !== 'undefined') {
+  if (typeof window !== "undefined") {
     const storedCart = localStorage?.getItem("shopping-cart");
     if (storedCart) {
       const shoppingCart = JSON.parse(storedCart);
@@ -53,13 +48,11 @@ const removeFromDb = (id) => {
       }
     }
   }
-
 };
 
 const deleteShoppingCart = () => {
-  if (typeof window !== 'undefined') {
+  if (typeof window !== "undefined") {
     localStorage?.removeItem("shopping-cart");
-    
   }
 };
 

@@ -3,10 +3,7 @@ import Button from "react-bootstrap/Button";
 import Card from "react-bootstrap/Card";
 
 function SingleCard({ item, index }) {
-
-
   // console.log("data", typeof item.score);
-  
 
   return (
     <Card className="m-2">
@@ -15,7 +12,6 @@ function SingleCard({ item, index }) {
         <Card.Title>{item?.show.name}</Card.Title>
         <Card.Body className="d-flex mr-4">
           <Card.Text>
-           
             <strong>status:</strong> {item?.show?.status}
           </Card.Text>
           <Card.Text>

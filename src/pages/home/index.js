@@ -4,11 +4,8 @@ import Row from "react-bootstrap/Row";
 import SingleCard from "@/components/card/SingleCard";
 import Layout from "@/components/Layout/Layout";
 
-
 const HomePage = () => {
-  
-    const [loadData, setLoadData] = useState(null);
-
+  const [loadData, setLoadData] = useState(null);
 
   useEffect(() => {
     fetch("https://api.tvmaze.com/search/shows?q=all")
@@ -18,16 +15,12 @@ const HomePage = () => {
       });
   }, []);
 
-
-
- 
-
   return (
     <Layout>
       <Container>
         <Row md={4} className=" ">
           {loadData?.map((item, i) => (
-            <SingleCard item={item} key={i} index={i}/>
+            <SingleCard item={item} key={i} index={i} />
           ))}
         </Row>
       </Container>

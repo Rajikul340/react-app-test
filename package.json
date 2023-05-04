@@ -13,7 +13,8 @@
     "next": "13.3.4",
     "react": "18.2.0",
     "react-bootstrap": "^2.7.4",
-    "react-dom": "18.2.0"
+    "react-dom": "18.2.0",
+    "react-hot-toast": "^2.4.1"
   },
   "main": "index.js",
   "author": "FFajibraj779r <mdrajikuli757@gmail.com>",
