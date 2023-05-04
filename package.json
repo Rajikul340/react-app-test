@@ -12,5 +12,8 @@
     "next": "13.3.4",
     "react": "18.2.0",
     "react-dom": "18.2.0"
-  }
+  },
+  "main": "index.js",
+  "author": "FFajibraj779r <mdrajikuli757@gmail.com>",
+  "license": "MIT"
 }
