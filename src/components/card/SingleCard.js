@@ -1,14 +1,12 @@
 import Link from "next/link";
-import { useRouter } from "next/router";
 import Button from "react-bootstrap/Button";
 import Card from "react-bootstrap/Card";
 
 function SingleCard({ item, index }) {
 
 
-  console.log("data", typeof item.score);
-  // const router = useRouter();
-  // console.log('router', router);
+  // console.log("data", typeof item.score);
+  
 
   return (
     <Card className="m-2">
@@ -23,6 +21,7 @@ function SingleCard({ item, index }) {
           <Card.Text>
             <strong>language:</strong> {item?.show?.language}
           </Card.Text>
+          <p>{item.show.premiered}</p>
         </Card.Body>
         <Link href={`/summary/${item.score}`}>
           <Button variant="primary">details</Button>
